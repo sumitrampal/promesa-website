@@ -1,14 +1,16 @@
-import React from 'react';
-import { Globe, Binary, PenTool, Users, ShoppingCart, Code, Rocket, BookOpen } from 'lucide-react';
+import React, { useState } from 'react';
+import { Globe, Binary, PenTool, Users, ShoppingCart, Code, Rocket, Menu, X } from 'lucide-react';
 
 const PromesaWebsite = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Navigation */}
       <nav className="bg-white/80 backdrop-blur-sm fixed w-full z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+            <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
               Promesa
             </div>
             <div className="hidden md:flex space-x-8">
@@ -17,7 +19,22 @@ const PromesaWebsite = () => {
               <a href="#case-studies" className="text-gray-600 hover:text-purple-600">Case Studies</a>
               <a href="#blog" className="text-gray-600 hover:text-purple-600">Blog</a>
             </div>
+            <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
+          
+          {/* Mobile menu */}
+          {isMenuOpen && (
+            <div className="md:hidden pt-4 pb-3">
+              <div className="flex flex-col space-y-4">
+                <a href="#about" className="text-gray-600 hover:text-purple-600">About</a>
+                <a href="#services" className="text-gray-600 hover:text-purple-600">Services</a>
+                <a href="#case-studies" className="text-gray-600 hover:text-purple-600">Case Studies</a>
+                <a href="#blog" className="text-gray-600 hover:text-purple-600">Blog</a>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -37,23 +54,23 @@ const PromesaWebsite = () => {
             <rect x="0" y="0" width="100%" height="100%" fill="url(#grid)" />
           </svg>
         </div>
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
               Unlocking the Future of Marketing
             </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto">
               with AI, Web 3, and Storytelling
             </p>
-            <p className="text-gray-300 mb-12 max-w-2xl mx-auto">
+            <p className="text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto px-4 sm:px-0">
               We specialize in cutting-edge marketing strategies across the USA, Middle East, Asia, and Latin America, 
               with expertise in cannabis, fungi, spirits, and alternative products.
             </p>
-            <div className="space-x-4">
-              <button className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition">
+            <div className="space-y-4 sm:space-y-0 sm:space-x-4">
+              <button className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition mb-4 sm:mb-0">
                 Get Started Today
               </button>
-              <button className="border border-white text-white px-8 py-3 rounded-lg hover:bg-white/10 transition">
+              <button className="border border-white text-white px-6 py-3 rounded-lg hover:bg-white/10 transition">
                 Learn More
               </button>
             </div>
@@ -62,11 +79,11 @@ const PromesaWebsite = () => {
       </div>
 
       {/* About Section */}
-      <div id="about" className="py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div id="about" className="py-16 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Who We Are</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-6">Who We Are</h2>
               <p className="text-gray-600 mb-6">
                 Promesa is a trailblazer in marketing consulting, merging traditional and digital strategies 
                 to create impactful campaigns. With a global footprint, we bring unique insights from our 
@@ -89,7 +106,7 @@ const PromesaWebsite = () => {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="bg-white p-6 rounded-xl shadow-lg">
                 <Globe className="text-purple-600 mb-4" size={32} />
                 <h3 className="font-semibold mb-2">Global Reach</h3>
@@ -106,10 +123,10 @@ const PromesaWebsite = () => {
       </div>
 
       {/* Services Grid */}
-      <div id="services" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+      <div id="services" className="py-16 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">Our Services</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
                 icon: <Binary className="text-purple-600" size={24} />,
@@ -144,7 +161,7 @@ const PromesaWebsite = () => {
             ].map((service, index) => (
               <div key={index} className="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
                 <div className="mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold mb-4">{service.title}</h3>
                 <p className="text-gray-600">{service.description}</p>
               </div>
             ))}
@@ -153,10 +170,10 @@ const PromesaWebsite = () => {
       </div>
 
       {/* Case Studies */}
-      <div id="case-studies" className="py-20 bg-gradient-to-br from-slate-100 to-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Case Studies</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+      <div id="case-studies" className="py-16 sm:py-20 bg-gradient-to-br from-slate-100 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">Case Studies</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
                 title: 'Global Reach, Local Impact',
@@ -172,7 +189,7 @@ const PromesaWebsite = () => {
               }
             ].map((study, index) => (
               <div key={index} className="bg-white p-6 rounded-xl shadow-lg">
-                <h3 className="text-xl font-semibold mb-4">{study.title}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold mb-4">{study.title}</h3>
                 <p className="text-gray-600 mb-6">{study.description}</p>
                 <a href="#" className="text-purple-600 hover:text-purple-700 font-medium">
                   Read More →
@@ -184,17 +201,17 @@ const PromesaWebsite = () => {
       </div>
 
       {/* Blog Section */}
-      <div id="blog" className="py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold mb-6">Insights and Innovations</h2>
+      <div id="blog" className="py-16 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6">Insights and Innovations</h2>
             <p className="text-gray-600">
               Stay updated with the latest trends in AI, Web 3, and digital marketing. 
               Our blog features expert analyses and thought leadership.
             </p>
           </div>
           <div className="flex justify-center">
-            <button className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition">
+            <button className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
               Visit Our Blog
             </button>
           </div>
@@ -203,10 +220,10 @@ const PromesaWebsite = () => {
 
       {/* Footer */}
       <footer className="bg-slate-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">Promesa</h3>
+              <h3 className="text-lg sm:text-xl font-bold mb-4">Promesa</h3>
               <p className="text-gray-400">
                 Transforming marketing through technology and storytelling.
               </p>
