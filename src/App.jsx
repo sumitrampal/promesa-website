@@ -159,10 +159,10 @@ const PromesaWebsite = () => {
                 description: 'Expert marketing for cannabis, fungi, spirits, and alternatives, ensuring regulatory compliance.'
               }
             ].map((service, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+              <div key={index} className="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition flex flex-col h-full">
                 <div className="mb-4">{service.icon}</div>
                 <h3 className="text-lg sm:text-xl font-semibold mb-4">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
+                <p className="text-gray-600 flex-grow">{service.description}</p>
               </div>
             ))}
           </div>
